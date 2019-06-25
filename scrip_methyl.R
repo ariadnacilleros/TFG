@@ -88,8 +88,6 @@ contrast.matrix<-makeContrasts(D-ND,levels=design)
 
 # limma 
 
-#DMP<-runPipeline(set=gRatioSet.quantile, variable_names = "Sample_Group", covariable_names = "Sample_covar", betas = TRUE, model=~0+variable.diab+variable.obess)
-
 eset <- ExpressionSet(assayData=betas)
 fit <- lmFit(eset, design)
 fit2 <- contrasts.fit(fit, contrast.matrix)
