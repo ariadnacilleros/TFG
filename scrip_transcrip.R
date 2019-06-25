@@ -25,7 +25,7 @@ colos<-rainbow(21)
 hist(GEOFS,target="core",col=colos)
 boxplot(GEOFS,target="core",col=colos,las=3,cex.axis=0.5)
 
-#NORMALITZACIÓ
+#NORMALITZACIÃ“
 GEOFS.rma<-rma(GEOFS)
 dim(exprs(GEOFS.rma)) #21 mostres i 33297 sondes
 GEOFS.rma
@@ -86,7 +86,7 @@ top.table<-topTable(fite,coef=1,number=Inf,adjust="BH")
 results<-decideTests(fite)
 table(results) 
 
-#distribució p-valor 
+#distribuciÃ³ p-valor 
 hist(top.table$P.Value,breaks=100,main="results P")
 
 results.p0.05<-top.table[top.table$P.Value<0.05,]
@@ -102,14 +102,14 @@ volcanoplot(fite,coef=1,highlight=nrow(results.p0.05.logFC1),names=rownames(resu
 #ANNOTATION
 library(annotate)
 library(hugene10sttranscriptcluster.db)
-hugene10sttranscriptcluster() #conté tota la info sobre els identificadors dels gens
+hugene10sttranscriptcluster() #contÃ© tota la info sobre els identificadors dels gens
 
 dat <- exprs(GEOFS.rma)[rownames(results.p0.05.logFC1),] #extreure la info del meu objecte expressionSet
 logFC <- results.p0.05.logFC1$logFC
 pval <- results.p0.05.logFC1$P.Value
 adj.pval<-results.p0.05.logFC1$adj.P.Val
 
-sym<-mget(rownames(results.p0.05.logFC1), env=hugene10sttranscriptclusterSYMBOL) #extrect el nom el símbol del gen
+sym<-mget(rownames(results.p0.05.logFC1), env=hugene10sttranscriptclusterSYMBOL) #extrect el nom el sÃ­mbol del gen
 name<-mget(rownames(results.p0.05.logFC1), env=hugene10sttranscriptclusterGENENAME) #extrect el nom del gen
 chr<-mget(rownames(results.p0.05.logFC1), env=hugene10sttranscriptclusterCHR) #extrect el cromosome del gen
 
@@ -126,13 +126,13 @@ htmlpage(genelist, filename, title, othernames, head, repository = repository)
 volcanoplot(fite,coef=1,highlight=nrow(topcpg),names=rownames(betas),main="Diabetes vs normal")
 
 
-#METLYOME GENES
+#METHYLOME GENES
 dat <- exprs(GEOFS.rma)[rownames(top.table),] #extreure la info del meu objecte expressionSet
 logFC <- top.table$logFC
 pval <- top.table$P.Value
 adj.pval<-top.table$adj.P.Val
 
-sym<-mget(rownames(top.table), env=hugene10sttranscriptclusterSYMBOL) #extrect el nom el símbol del gen
+sym<-mget(rownames(top.table), env=hugene10sttranscriptclusterSYMBOL) #extrect el nom el sÃ­mbol del gen
 name<-mget(rownames(top.table), env=hugene10sttranscriptclusterGENENAME) #extrect el nom del gen
 chr<-mget(rownames(top.table), env=hugene10sttranscriptclusterCHR) #extrect el cromosome del gen
 
