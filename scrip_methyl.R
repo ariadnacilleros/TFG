@@ -58,8 +58,6 @@ gRatioSet.quantile <- gRatioSet.quantile[keep,]
 ## remove probes with SNPs at CpG or SBE site
 gRatioSet.quantile<- dropLociWithSnps(gRatioSet.quantile)
 
-# *** Afegit Malu ***
-
 betas<-getBeta(gRatioSet.quantile)
 M <- getM(gRatioSet.quantile)
 #save(betas,file="betas.rda")
